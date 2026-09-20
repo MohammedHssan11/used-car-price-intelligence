@@ -8,7 +8,6 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Large model binaries (>50MB)
-models/model.pkl
 
 # Raw full datasets
 data/used_cars.csv
