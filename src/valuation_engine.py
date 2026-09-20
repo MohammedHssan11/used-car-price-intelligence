@@ -22,8 +22,11 @@ class CarValuationEngine:
     def __init__(self, model_path: Optional[Union[str, Path]] = None, pipeline: Any = "DEFAULT"):
         if pipeline != "DEFAULT":
             self.pipeline = pipeline
+        elif model_path is not None:
+            p_path = Path(model_path)
+            self.pipeline = joblib.load(p_path) if p_path.exists() else None
         else:
-            p_path = Path(model_path) if model_path else DEFAULT_MODEL_PATH
+            p_path = DEFAULT_MODEL_PATH
             if p_path.exists():
                 self.pipeline = joblib.load(p_path)
             else:
